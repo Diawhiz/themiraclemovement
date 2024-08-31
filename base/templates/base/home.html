@@ -1,0 +1,75 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <section class="section">
+            <div class="slider">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-16by9 is-covered">
+                            <img src="{% static 'images\event\Adobe_Express_20230801_1605440_1.png' %}" alt="">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero">
+            <div class="content">
+                <div class="columns">
+                    <div class="column">
+                        <h1 class="title">The Miracle Movement</h1>
+                        <p>Intro with color, paddings and a video on the right. Mobirise helps you cut down development time by providing you with a flexible website editor with a drag and drop interface. </p>
+                    </div>
+                    <div class="column">
+                        <figure>
+                            <img src="{% static 'images\event\Adobe_Express_20230801_1620280_1.png' %}" alt="">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="columns">
+                    <div class="column">
+                        <figure>
+                            <img src="{% static 'images\event\Adobe_Express_20230912_1417230_1.png' %}" alt="">
+                        </figure>
+                    </div>
+                    <div class="column">
+                        <h1 class="title">What we envisioned</h1>
+                        <p> Composition. A harmonious arrangement of elements, like notes in a symphony, creating a balanced and expressive piece of art. <br> An engaging and dynamic display of talent, emotion, or skill, captivating audiences and evoking powerful reactions. A structured and compelling delivery of information or ideas, effectively communicating and engaging with the audience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero">
+            <div class="hero-body">
+                <h1 class="title has-text-centered">Check out our latest materials</h1>
+                <div class="columns">
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure>
+                                    <img src="{% static 'images\event\Adobe_Express_20230801_1617420_1.png' %}" alt="">
+                                </figure>
+                            </div>
+                            <div class="card-head">
+                                <h1 class="subtitle"><strong>The mind: The key to transformation</strong></h1>
+                            </div>
+                            <div class="buttons">
+                                <a href="#" download class="button is-primary">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero">
+            <h1 class="title has-text-centered">Send us message</h1>
+        </section>
+    </div>
+{% endblock  %}

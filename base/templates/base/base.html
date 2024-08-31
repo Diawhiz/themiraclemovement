@@ -1,0 +1,97 @@
+{% load static %}
+{% load compress %} 
+{% load django_simple_bulma %} 
+{% load widget_tweaks %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {% endblock %} The Miracle Movement </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Acme&family=New+Amsterdam&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{% static 'icons/tmm-icon.png' %}" type="image/x-icon">
+    {% compress css %}
+        <link rel="stylesheet" type="text/x-scss" href="{% static "base/base.scss" %}" />
+    {% endcompress %}
+    {% bulma %} 
+    {% font_awesome %} {% comment %} Menu starts {% endcomment %} 
+
+</head>
+<body>
+    {% comment %} preloader {% endcomment %}
+    <div class="pageloader">
+        <div class="square square1"></div>
+        <div class="square square2"></div>
+        <div class="square square3"></div>
+    </div>
+
+    <nav class="navbar is-primary">
+        <div class="container">
+            <div class="navbar-brand">
+                <div class="navbar-item">
+                    <a href="{% url 'home' %}" class="navbar-brand"><img src="{% static 'icons\TMM-Logo-World-150x150.png' %}" alt="TMM logo"></a>
+                </div>
+                <div class="navbar-burger" data-target="navbarMenuHeroA">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="navbarMenuHeroA" class="navbar-menu">
+                <div class="navbar-end">
+                    <a href="{% url 'home' %}" class="navbar-item">Home</a>
+                    <a href="#" class="navbar-item">About</a>
+                    <a href="#" class="navbar-item">Blog</a>
+                    <a href="#" class="navbar-item">Media</a>
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a href="#" class="button is-danger" id="live-button">Live</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+    <footer class="footer has-">
+        <div class="columns">
+            <div class="column">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.730743715548!2d3.8662771738331014!3d7.384041712567857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10398d5580743055%3A0xc65f57e7fa0ad82b!2sChrist%20miracle%20church%20Agbala%20Ayo%20Church!5e0!3m2!1sen!2sng!4v1725056847908!5m2!1sen!2sng" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="column">
+                <h1 class="title">Contact Us:</h1>
+                <p> Agaloke Estate, Apata, Ibadan, Oyo state 200262 </p>
+                <p> <a href="tel:+2347066576020">+234 (706) 657 6020</a> </p>
+                <p> <a href="mailto:info@themiraclemovement.org">info@themiraclemovement.org</a> </p>             
+            </div>
+        </div>
+
+        <div class="socials has-text-centered">
+            <h1>Connect with us on our social media</h1>
+            <ul class="social-menu">
+                <li class="social-items"><a href="http://www.facebook.com/themiraclemovementinc" target="_blank">facebook</a></li>
+                <li class="social-items"><a href="http://www.instagram.com/themiraclemovementinc" target="_blank">instagram</a></li>
+                <li class="social-items"><a href="http://www.youtube.com/@themiraclemovement" target="_blank">youtube</a></li>
+            </ul>
+        </div>
+
+        <div class="content has-text-centered">
+            <p class="copyright">Copyright &copy; 2024 All rights reserved. The Miracle Global Ministry</p>
+        </div>
+    </footer>
+
+    {% comment %} <script src="{% static 'scripts/mobile-navbar.js' %}"></script>
+    <script src="{% static 'scripts/slider.js' %}"></script>
+    <script src="{% static 'scripts/script.js' %}"></script> {% endcomment %}
+</body>
+</html>
