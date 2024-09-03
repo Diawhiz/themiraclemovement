@@ -2,6 +2,15 @@ from django import forms
 from .models import Contact, FirstTimer, Country
 
 class ContactForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ContactForm, self).__init__(*args, **kwargs)
+        placeholders = {
+            'name': 'Fullname',
+            'email': 'Email Address',
+            'body': 'Send us message',
+        }
+        for field, placeholder in placeholders.items():
+            self.fields[field].widget.attrs['placeholder'] = placeholder
     class Meta:
         model = Contact
         fields = ('name', 'email', 'body')
