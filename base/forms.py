@@ -11,6 +11,7 @@ class ContactForm(forms.ModelForm):
         }
         for field, placeholder in placeholders.items():
             self.fields[field].widget.attrs['placeholder'] = placeholder
+            
     class Meta:
         model = Contact
         fields = ('name', 'email', 'body')
