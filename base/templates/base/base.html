@@ -44,7 +44,7 @@
             <div id="navbarMenuHeroA" class="navbar-menu">
                 <div class="navbar-end">
                     <a href="{% url 'home' %}" class="navbar-item">Home</a>
-                    <a href="#" class="navbar-item">About</a>
+                    <a href="{% url 'about' %}" class="navbar-item">About</a>
                     <a href="#" class="navbar-item">Blog</a>
                     <a href="#" class="navbar-item">Media</a>
                     <div class="navbar-item">
@@ -92,6 +92,6 @@
 
     <script src="{% static 'scripts/mobile-navbar.js' %}"></script>
     {% comment %} <script src="{% static 'scripts/slider.js' %}"></script> {% endcomment %}
-    {% comment %} <script src="{% static 'scripts/script.js' %}"></script> {% endcomment %}
+    <script src="{% static 'scripts/script.js' %}"></script>
 </body>
 </html>

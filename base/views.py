@@ -9,3 +9,6 @@ def home(request):
         if contact_form.is_valid():
             contact_form.save()
     return render(request, 'base/home.html', {'contact_form': contact_form})
+
+def about(request):
+    return render(request, 'base/about.html')
