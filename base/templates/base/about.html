@@ -3,6 +3,68 @@
 {% load widget_tweaks %}
 
 {% block content %}
-    <h2 class="title has-text-centered">About Us</h2>
+    <section class="section">
+        <div class="columns">
+            <div class="column is-success">
+                <h1 class="title">Our Vision:</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima illum necessitatibus distinctio quisquam consequatur hic, impedit fugit quod, cumque provident animi voluptate aliquam sed doloribus odio numquam aperiam ipsa dolor? (1 Timothy 2: 4)</p>
+            </div>
+            <div class="column is-success ">
+                <h1 class="title">Our Mission:</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, eveniet. Iusto illum, qui eaque ipsum eveniet non odit, quas dolor natus fugiat minus ipsam dicta impedit! Dicta culpa quis tempora! Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit mollitia quia fugiat repudiandae blanditiis modi libero quaerat cupiditate aut, at, voluptatum laborum, obcaecati illo! Esse magni ipsam voluptates quo in.</p>
+            </div>
+        </div>
+    </section>
 
+    <section class="section">
+        <div class="columns">
+            <div class="column">
+                <h1 class="title">Brief history</h1>
+                <p>In a fleeting world, photographs are like tiny frames capturing life's essence. They freeze moments, preserving emotions and stories for eternity. Like artwork in frames, photos capture the ordinary and make it extraordinary. A smile, a glance, a sunset—they all become chapters in our personal narrative. <br> Photographers are storytellers. They use frames, light, and composition to craft emotional tales. Each shot is a canvas painted with memories, inviting us to revisit the past. In today's digital age, photos connect us globally, but their essence remains timeless, whether on mantelpieces or screens. <br> Photos as frames bridge generations. Family albums pass down traditions and legacies. Amid life's chaos, photos offer a pause, a chance to reflect and appreciate. They're the threads weaving our life's tapestry, reminding us of the beauty in the everyday.</p>
+            </div>
+            <div class="column">
+                <figure class="image">
+                    <img src="{% static 'images/pastors/Pastor-Binuyo-Tomiwa-853x1024.png' %}" alt="Pastor Binuyo Tomiwa">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="columns">
+            <div class="column">
+                <figure class="image">
+                    <img src="{% static 'images\event\Adobe_Express_20230801_1617420_1.png' %}" alt="Our Traits 1">
+                </figure>
+            </div>
+            <div class="column">
+                <ol>
+                    <li><span class="subtitle"><strong>Academic Excellence:</strong></span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptatibus ex quaerat eveniet, ipsa architecto ut quas culpa error tenetur, mollitia natus. Neque, itaque sapiente voluptatibus maiores nam incidunt est!</li>
+                    
+                    <li><span class="subtitle"><strong>Financial Prosperity:</strong></span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptatibus ex quaerat eveniet, ipsa architecto ut quas culpa error tenetur, mollitia natus. Neque, itaque sapiente voluptatibus maiores nam incidunt est!</li>
+
+                    <li><span class="subtitle"><strong>The Supernatural:</strong></span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptatibus ex quaerat eveniet, ipsa architecto ut quas culpa error tenetur, mollitia natus. Neque, itaque sapiente voluptatibus maiores nam incidunt est!</li>
+                </ol>
+            </div>
+            <div class="column">
+                <figure class="image">
+                    <img src="{% static 'images\event\Adobe_Express_20230912_1348380_1.png' %}" alt="Our Traits 2">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    {% comment %} section that contain GOS image carousel (8) {% endcomment %}
+    <section class="hero">
+        <div class="slider">
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h1 class="title has-text-centered">Check us out in our various regions by clicking on the button below</h1>
+        <div class="buttons">
+            <a href="{% url 'pastors' %}" class="button is-primary is-large">Regions</a>
+        </div>
+    </section>
 {% endblock %}

@@ -12,3 +12,6 @@ def home(request):
 
 def about(request):
     return render(request, 'base/about.html')
+
+def pastors(request):
+    return render(request, 'base/pastors.html')
