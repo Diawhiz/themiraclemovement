@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class="columns is-multiline">
+        {% for post in blog_view %}
+            <div class="column is-12-tablet is-6-desktop is-4-widescreen is-centered">
+                <div class="card">
+                    <a href="{% url 'blog_detail' post.slug %}">
+                        <div class="card-image">
+                            <figure class="image is-256x256 is-square">
+                                <img src="{{ post.image.url }}" alt="Blog Post Image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <header class="card-header">
+                                <p class="card-header-title">{{ post.title }}</p>
+                            </header>
+                            <small>
+                                <span>{{ post.author }}</span>
+                                <span>{{ post.posted_on }}</span>
+                            </small>
+                            <div class="card-content">
+                                <div class="content">
+                                    <p>{{ post.snipet| safe }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% comment %} pagination code format {% endcomment %}
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+                <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">Next</a>
+            {% endif %} 
+        {% endif %}
+    </nav>
+
+{% endblock  %}

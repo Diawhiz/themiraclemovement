@@ -156,8 +156,8 @@ COMPRESS_PRECOMPILERS = (
 
 BULMA_SETTINGS = {
     "custom_scss": [
-    "core/core.scss",                  # This is okay
-    "mugenverse/static/core/core.scss",    # This also is okay
+    "base/base.scss",                  # This is okay
+    "base/static/base/base.scss",    # This also is okay
     ],
     "extensions": [
     "bulma-collapsible",
