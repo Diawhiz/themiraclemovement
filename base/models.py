@@ -26,7 +26,7 @@ class Contact(models.Model):
 class FirstTimer(models.Model):
     name = models.CharField(max_length=80)
     email = models.EmailField()
-    country = models.ForeignKey(Country, on_delete=models.CASCADE, null=True)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='country', default=1)
     phone = models.CharField(max_length=20)
     created_on = models.DateTimeField(auto_now_add=True)
 

@@ -5,59 +5,57 @@
 {% block content %}
     <div class="container">
         <div class="content is-medium">
-            <h2>{{ post_detail.title }}</h2>
-            <p>{{ post_detail.author }} | {{ post_detail.posted_on }}</p>
-            {% if post_detail.image %}
+            <h2>{{ blog_detail.title }}</h2>
+            <p>{{ blog_detail.author }} | {{ blog_detail.posted_on }}</p>
+            {% if blog_detail.image %}
                 <figure class="image is-256x256 is-1by1">
-                    <img src="{{ post_detail.image.url }}" alt="{{ post_detail.title }}">
-                    <figcaption><small>{{ post_detail.title }}</small></figcaption>
+                    <img src="{{ blog_detail.image.url }}" alt="{{ blog_detail.title }}">
+                    <figcaption><small>{{ blog_detail.title }}</small></figcaption>
                 </figure>
             {% endif %}
-            <p id="content">{{ post_detail.content | safe }}</p>
+            <p id="content">{{ blog_detail.content | safe }}</p>
         </div>
         
-        <div class="content">
-            <h2>Comments</h2>
-            <ul>
-                {% for comment in comments %}
-                    <div class="comment">
-                        {% comment %} <figure class="image is-32x32">
-                            <img class="is-rounded" src="{{ post_detail.image.url }}" alt="userimg">
-                        </figure> {% endcomment %}
-                        <li><strong>{{ comment.name }}:</strong> <br>{{ comment.body }}</li>
-                    </div> <hr>
-                {% empty %}
-                    <li>No comments yet.</li>
-                {% endfor %}
-            </ul>
-
-            <h2>Leave a comment</h2>
-            <form method="post" action="{% url 'add_comment' blog_detail.slug %}">
-                {% csrf_token %}
-                <div class="field">
-                    <label class="label">Name:</label>
-                    <div class="control">
-                        {{ comment_form.name | add_class:"input is-rounded is-success" }}
+        <div class="section">
+            <div class="content">
+                <h2>Comments</h2>
+                <ul>
+                    {% for comment in comments %}
+                        <div class="section">
+                            <li><strong>{{ comment.name }}:</strong> <br>{{ comment.body }}</li>
+                        </div> <hr>
+                    {% empty %}
+                        <li>No comments yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div class="content">
+                <h2>Leave a comment</h2>
+                <form method="post" action="{% url 'add_comment' blog_detail.slug %}">
+                    {% csrf_token %}
+                    <div class="field">
+                        <div class="control">
+                            {{ comment_form.name | add_class:"input is-medium is-success" }}
+                        </div>
                     </div>
-                </div>
-                <div class="field">
-                    <label class="label">Email:</label>
-                    <div class="control">
-                        {{ comment_form.email | add_class:"input is-rounded is-success" }}
+                    <div class="field">
+                        <div class="control">
+                            {{ comment_form.email | add_class:"input is-medium is-success" }}
+                        </div>
                     </div>
-                </div>
-                <div class="field">
-                    <label class="label">Comments:</label>
-                    <div class="control">
-                        {{ comment_form.body | add_class:"textarea is-success" }}
+                    <div class="field">
+                        <div class="control">
+                            {{ comment_form.body | add_class:"textarea is-success" }}
+                        </div>
                     </div>
-                </div>
-                <div class="field">
-                    <div class="control">
-                        <button class="button is-success" type="submit">Add comment</button>
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-success" type="submit">Add comment</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock  %}

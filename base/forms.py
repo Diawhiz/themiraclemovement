@@ -24,6 +24,16 @@ class FirstTimerForm(forms.ModelForm):
 
 # comment form
 class CommentForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(CommentForm, self).__init__(*args, **kwargs)
+        placeholders = {
+            'name': 'Fullname',
+            'email': 'Email Address',
+            'body': 'Add your comment',
+        }
+        for field, placeholder in placeholders.items():
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+
     class Meta:
         model = Comment
         fields = ('name', 'email', 'body')

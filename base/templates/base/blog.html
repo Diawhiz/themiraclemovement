@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="columns is-multiline">
-        {% for post in blog_view %}
+        {% for post in blog %}
             <div class="column is-12-tablet is-6-desktop is-4-widescreen is-centered">
                 <div class="card">
                     <a href="{% url 'blog_detail' post.slug %}">
