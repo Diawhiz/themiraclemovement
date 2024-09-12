@@ -11,7 +11,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(FirstTimer)
 class FirstTimerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'country', 'phone')
+    list_display = ('name', 'email', 'phone')
     list_filter = ['created_on']
     search_fields = ('name', 'email', 'phone')
 
