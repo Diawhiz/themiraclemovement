@@ -1,0 +1,15 @@
+// default styling for the website to override unused element
+$primary-color: #dbb722;
+$secondary-color: #8b0ac5;
+$hero-color: #dbdada;
+$text-color: #444444;
+
+.default-image {
+    width: 500px;
+    height: 200px;
+}
+
+.columns {
+    background: $hero-color !important;
+    color: $text-color !important;
+}
