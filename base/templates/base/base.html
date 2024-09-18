@@ -1,6 +1,5 @@
-{% load static %}
-{% load compress %} 
-{% load django_simple_bulma %} 
+{% load static %} 
+{% load compress %}
 {% load widget_tweaks %} 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +16,6 @@
     {% compress css %}
         <link rel="stylesheet" type="text/x-scss" href="{% static "base/base.scss" %}" />
     {% endcompress %}
-    {% bulma %} 
-    {% font_awesome %} {% comment %} Menu starts {% endcomment %} 
-
 </head>
 <body>
     {% comment %} preloader {% endcomment %}
@@ -29,31 +25,25 @@
         <div class="square square3"></div>
     </div>
 
-    <nav class="navbar is-primary">
-        <div class="container">
-            <div class="navbar-brand">
-                <div class="navbar-item">
-                    <a href="{% url 'home' %}" class="navbar-brand"><img src="{% static 'icons\TMM-Logo-World-150x150.png' %}" alt="TMM logo"></a>
-                </div>
-                <div class="navbar-burger" data-target="navbarMenuHeroA">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <a href="{% url 'home' %}" class="navbar-brand"><img src="{% static 'icons\TMM-Logo-World-150x150.png' %}" alt="TMM logo">The Miracle Movement</a>
             </div>
-            <div id="navbarMenuHeroA" class="navbar-menu">
-                <div class="navbar-end">
-                    <a href="{% url 'home' %}" class="navbar-item">Home</a>
-                    <a href="{% url 'about' %}" class="navbar-item">About</a>
-                    <a href="{% url 'blog' %}" class="navbar-item">Blog</a>
-                    <a href="#" class="navbar-item">Media</a>
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a href="#" class="button is-danger" id="live-button">Live</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+        </div>
+        <div class="navbar-menu">
+            <ul>
+                <li><a href="{% url 'home' %}" class="navbar-item">Home</a></li>
+                <li><a href="{% url 'about' %}" class="navbar-item">About</a></li>
+                <li><a href="{% url 'blog' %}" class="navbar-item">Blog</a></li>
+                <li><a href="#" class="navbar-item">Media</a></li>
+                <li><a href="#" class="navbar-item" id="live-button">Live</a></li>
+            </ul>    
         </div>
     </nav>
 
@@ -90,8 +80,7 @@
         </div>
     </footer>
 
-    <script src="{% static 'scripts/mobile-navbar.js' %}"></script>
-    {% comment %} <script src="{% static 'scripts/slider.js' %}"></script> {% endcomment %}
+    <script src="{% static 'scripts/mobile-navbar.js' %}"></script>  
     <script src="{% static 'scripts/script.js' %}"></script>
 </body>
 </html>

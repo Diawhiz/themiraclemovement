@@ -41,7 +41,6 @@ INSTALLED_APPS = [
 
     'base.apps.BaseConfig',
     'froala_editor',
-    'django_simple_bulma',
     'compressor',
     'widget_tweaks',
 ]
@@ -142,7 +141,6 @@ STATICFILES_FINDERS = [
       'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 
       # Now add our custom SimpleBulma one.
-      'django_simple_bulma.finders.SimpleBulmaFinder',
       'compressor.finders.CompressorFinder',
     ]
 
@@ -153,27 +151,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
-
-BULMA_SETTINGS = {
-    "custom_scss": [
-    "base/base.scss",                  # This is okay
-    "base/static/base/base.scss",    # This also is okay
-    ],
-    "extensions": [
-    "bulma-collapsible",
-    "bulma-calendar",
-    ],
-    "variables": {
-    "primary": "#000000",
-    "size-1": "6rem",
-    },
-    "alt_variables": {
-    "primary": "#fff",
-    "scheme-main": "#000",
-    },
-    "output_style": "compressed",
-    "fontawesome_token": "e761a01be3",
-}
+ 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
