@@ -1,4 +1,6 @@
 @import './variables';
+@import './resets';
+@import './responsiveness';
 
 @function weight($weight-name) {
     @return map-get($font-weights, $weight-name);
@@ -19,7 +21,8 @@
     @include navbarFlexCenter(row);
 
     background-color: $primary-color;
-    padding: 5px 20px;
+    padding: 15px 20px;
+    margin: 0 0 20px 0;
 }
 
 .navbar-brand {
@@ -36,6 +39,19 @@
     .brand-logo {
         width: 25px;
         height: auto;
+    }
+
+    .navbar-burger {
+        display: inline-block;
+        cursor: pointer;
+
+        span {
+            width: 35px;
+            height: 5px;
+            background-color: #444444;
+            margin: 6px 0;
+            // transition: 0.4s;
+        }
     }
 }
 
@@ -58,7 +74,7 @@
 
     #live-button {
         background: $danger;
-        padding: 15px;
+        padding: 10px 15px;
         border-radius: 10px;
 
         &:hover {
