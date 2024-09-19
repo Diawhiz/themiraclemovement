@@ -1,0 +1,10 @@
+/* line 3, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+/* line 9, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+.navbar-logo {
+  width: 50px;
+  height: auto; }

@@ -1,0 +1,59 @@
+/* line 18, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  background-color: #dbb722;
+  padding: 5px 20px; }
+
+/* line 25, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+.navbar-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row; }
+  /* line 28, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+  .navbar-brand .navbar-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    text-decoration: none;
+    color: #dbdada;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none; }
+  /* line 38, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+  .navbar-brand .brand-logo {
+    width: 25px;
+    height: auto; }
+
+/* line 44, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+.navbar-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  list-style: none; }
+  /* line 48, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+  .navbar-menu .navbar-item {
+    color: #dbdada;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-left: 15px; }
+    /* line 56, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+    .navbar-menu .navbar-item:hover {
+      color: #444444; }
+  /* line 61, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+  .navbar-menu #live-button {
+    background: #a30a0a;
+    padding: 15px;
+    border-radius: 10px; }
+    /* line 66, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+    .navbar-menu #live-button:hover {
+      background: #444444;
+      color: #dbdada; }

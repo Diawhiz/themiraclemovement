@@ -1,0 +1,36 @@
+/* line 17, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+.navbar {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: #dbb722; }
+
+/* line 23, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  flex-direction: row; }
+  /* line 26, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+  .navbar-brand .navbar-logo {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-decoration: none;
+    color: #dbdada;
+    font-weight: 500; }
+  /* line 33, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+  .navbar-brand .brand-logo {
+    width: 50px;
+    height: auto; }
+
+/* line 39, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  flex-direction: row; }
+  /* line 42, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+  .navbar-menu .navbar-items {
+    list-style: none;
+    color: #dbdada;
+    font-weight: 500;
+    font-size: 14px; }

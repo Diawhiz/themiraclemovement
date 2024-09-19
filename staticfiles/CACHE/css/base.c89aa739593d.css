@@ -1,0 +1,25 @@
+/* line 14, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  background-color: #dbb722; }
+
+/* line 20, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+.navbar-brand {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row; }
+  /* line 23, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+  .navbar-brand .navbar-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #dbdada;
+    font-weight: 500; }
+  /* line 31, ../../Desktop/TheMiracleMovement/base/static/base/base.scss */
+  .navbar-brand .brand-logo {
+    width: 50px;
+    height: auto; }

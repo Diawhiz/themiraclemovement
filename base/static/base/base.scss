@@ -1,10 +1,69 @@
-// default styling for the website to override unused element
-$primary-color: #dbb722;
-$secondary-color: #8b0ac5;
-$hero-color: #dbdada;
-$text-color: #444444;
+@import './variables';
 
-body {
-    background: $text-color;
-    color: $hero-color;
+@function weight($weight-name) {
+    @return map-get($font-weights, $weight-name);
+}
+
+@function size($font-name) {
+    @return map-get($font-sizes, $font-name);
+}
+
+@mixin navbarFlexCenter($direction) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+.navbar {
+    @include navbarFlexCenter(row);
+
+    background-color: $primary-color;
+    padding: 5px 20px;
+}
+
+.navbar-brand {
+   @include navbarFlexCenter(row);
+
+    .navbar-logo {
+        @include navbarFlexCenter(row);
+        text-decoration: none;
+        color: $hero-color;
+        font-weight: weight(medium);
+        font-size: size(text);
+    }
+
+    .brand-logo {
+        width: 25px;
+        height: auto;
+    }
+}
+
+.navbar-menu {
+    @include navbarFlexCenter(row);
+    list-style: none;
+
+    .navbar-item {
+        color: $hero-color;
+        font-weight: weight(medium);
+        font-size: size(text);
+        text-transform: uppercase;
+        text-decoration: none;
+        margin-left: 15px;
+
+        &:hover {
+            color: $text-color;
+        }
+    }
+
+    #live-button {
+        background: $danger;
+        padding: 15px;
+        border-radius: 10px;
+
+        &:hover {
+            background: $text-color;
+            color: $hero-color;
+        }
+    }
 }
