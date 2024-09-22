@@ -1,0 +1,27 @@
+@mixin navbarFlexCenter($direction) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@media only screen and (max-width: 480px) {
+    .navbar {
+        @include navbarFlexCenter(column);
+
+        .navbar-menu {
+            display: none;
+        }
+
+        .navbar-burger {
+            display: inline-block;
+        }
+    }
+}
+
+// Responsiveness for Tablet screen (min-width: 481px and max-width: 768px)
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .navbar {
+        @include navbarFlexCenter(row);
+    }
+}

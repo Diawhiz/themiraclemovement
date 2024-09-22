@@ -1,6 +1,5 @@
 @import './variables';
 @import './resets';
-@import './responsiveness';
 
 @function weight($weight-name) {
     @return map-get($font-weights, $weight-name);
@@ -26,7 +25,7 @@
 }
 
 .navbar-brand {
-   @include navbarFlexCenter(row);
+    @include navbarFlexCenter(row);
 
     .navbar-logo {
         @include navbarFlexCenter(row);
@@ -42,15 +41,14 @@
     }
 
     .navbar-burger {
-        display: inline-block;
         cursor: pointer;
-
-        span {
-            width: 35px;
-            height: 5px;
+        
+        .burger {
+            display: none;
+            width: 30px;
+            height: 3px;
             background-color: #444444;
             margin: 6px 0;
-            // transition: 0.4s;
         }
     }
 }
@@ -81,5 +79,34 @@
             background: $text-color;
             color: $hero-color;
         }
+    }
+}
+
+//The code below is for responsiveness
+@media only screen and (max-width: 480px) {
+    .navbar {
+        @include navbarFlexCenter(row);
+
+        .navbar-brand {
+            @include navbarFlexCenter(row);
+
+            .navbar-burger {
+            
+                .burger {
+                    display: block;
+                }
+            }
+        }
+
+        .navbar-menu {
+            display: none;
+        }
+    }
+}
+
+// Responsiveness for Tablet screen (min-width: 481px and max-width: 768px)
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .navbar {
+        @include navbarFlexCenter(row);
     }
 }

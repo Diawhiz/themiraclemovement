@@ -30,9 +30,9 @@
             <a href="{% url 'home' %}" class="navbar-logo"><img class="brand-logo" src="{% static 'icons\TMM-Logo-World-150x150.png' %}" alt="TMM logo">The Miracle Movement</a>
 
             <div class="navbar-burger">
-                <span class="bar1"></span>
-                <span class="bar2"></span>
-                <span class="bar3"></span>
+                <span class="burger"></span>
+                <span class="burger"></span>
+                <span class="burger"></span>
             </div>
         </div>
         <div>
@@ -41,7 +41,7 @@
                 <li><a href="{% url 'about' %}" class="navbar-item">About</a></li>
                 <li><a href="{% url 'blog' %}" class="navbar-item">Blog</a></li>
                 <li><a href="#" class="navbar-item">Media</a></li>
-                <li><a href="#" class="navbar-item" id="live-button">Live</a></li>
+                <li><a href="{% url 'live' %}" class="navbar-item" id="live-button">Live</a></li>
             </ul>    
         </div>
     </nav>

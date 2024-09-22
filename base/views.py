@@ -19,6 +19,9 @@ def about(request):
 def pastors(request):
     return render(request, 'base/pastors.html')
 
+def live(request):
+    return render(request, 'base/live.html')
+
 class BlogView(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-posted_on')
