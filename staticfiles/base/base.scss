@@ -16,6 +16,13 @@
     flex-direction: $direction;
 }
 
+@mixin dataColumns() {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .navbar {
     @include navbarFlexCenter(row);
 
@@ -80,6 +87,16 @@
             color: $hero-color;
         }
     }
+}
+
+.section {
+    margin: 20px auto;
+}
+
+.columns {
+    @include dataColumns();
+
+    margin: 20px auto;
 }
 
 //The code below is for responsiveness

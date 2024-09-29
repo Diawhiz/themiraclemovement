@@ -16,6 +16,20 @@
     flex-direction: $direction;
 }
 
+@mixin dataColumns() {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+body {
+    font-size: size(text);
+    font-weight: weight(regular);
+    color: $text-color;
+    background: $hero-color;
+}
+
 .navbar {
     @include navbarFlexCenter(row);
 
@@ -80,6 +94,46 @@
             color: $hero-color;
         }
     }
+}
+
+.section {
+    margin: 20px auto;
+}
+
+.container {
+    margin: 20px;
+}
+
+.columns {
+    @include dataColumns();
+
+    margin: 20px auto;
+}
+
+.column {
+    margin: 20px;
+}
+
+.title {
+    font-weight: weight(bold);
+    font-size: size(title);
+}
+
+.subtitle {
+    font-weight: weight(bold);
+    font-size: size(subtitle);
+}
+
+has-text-centered {
+    text-align: center;
+}
+
+.image {
+    width: 500px;
+    height: 350px;
+    border: none;
+    border-radius: 20px;
+    object-fit: cover;
 }
 
 //The code below is for responsiveness
