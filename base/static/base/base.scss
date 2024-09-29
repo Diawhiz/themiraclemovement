@@ -124,7 +124,7 @@ body {
     font-size: size(subtitle);
 }
 
-has-text-centered {
+.has-text-centered {
     text-align: center;
 }
 
@@ -134,6 +134,40 @@ has-text-centered {
     border: none;
     border-radius: 20px;
     object-fit: cover;
+}
+
+//post card
+.card {
+    width: 300px;
+    height: auto;
+    color: $hero-color;
+    background: $secondary-color;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.card-image {
+    width: auto;
+    height: 300px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.button-ad {
+    margin: 10px;
+    text-align: center;
+}
+
+.card-button {
+    text-decoration: none;
+    background: $primary-color;
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+
+.card-button:hover {
+    background: $hero-color;
+    color: $primary-color;
 }
 
 //The code below is for responsiveness

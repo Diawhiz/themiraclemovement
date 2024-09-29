@@ -20,7 +20,14 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+}
+
+body {
+    font-size: size(text);
+    font-weight: weight(regular);
+    color: $text-color;
+    background: $hero-color;
 }
 
 .navbar {
@@ -93,11 +100,67 @@
     margin: 20px auto;
 }
 
+.container {
+    margin: 20px;
+}
+
 .columns {
     @include dataColumns();
 
     margin: 20px auto;
 }
+
+.column {
+    margin: 20px;
+}
+
+.title {
+    font-weight: weight(bold);
+    font-size: size(title);
+}
+
+.subtitle {
+    font-weight: weight(bold);
+    font-size: size(subtitle);
+}
+
+.has-text-centered {
+    text-align: center;
+}
+
+.image {
+    width: 500px;
+    height: 350px;
+    border: none;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+//post card
+.card {
+    width: 300px;
+    height: 400px;
+    color: $hero-color;
+    background: $secondary-color;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.card-image {
+    width: auto;
+    height: 300px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.card-button {
+    text-decoration: none;
+    background: $primary-color;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100px;
+}
+
 
 //The code below is for responsiveness
 @media only screen and (max-width: 480px) {
