@@ -35,7 +35,8 @@ body {
 
     background-color: $primary-color;
     padding: 15px 20px;
-    margin: 0 0 20px 0;
+    margin: 0 0 5px 0;
+    // position: fixed;
 }
 
 .navbar-brand {
@@ -102,6 +103,14 @@ body {
 
 .container {
     margin: 20px;
+}
+
+.welcome {
+    background: url(base\static\images\event\Adobe_Express_20230912_1344060_1.png);
+    color: $text-color;
+    min-width: 100%;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .columns {
