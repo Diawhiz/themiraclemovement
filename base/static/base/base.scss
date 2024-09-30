@@ -108,10 +108,10 @@ body {
     @include dataColumns();
 
     margin: 20px auto;
-}
 
-.column {
-    margin: 20px;
+    .column {
+        margin: 20px;
+    }
 }
 
 .title {
@@ -120,7 +120,7 @@ body {
 }
 
 .subtitle {
-    font-weight: weight(bold);
+    font-weight: weight(medium);
     font-size: size(subtitle);
 }
 
@@ -136,6 +136,11 @@ body {
     object-fit: cover;
 }
 
+.has-border {
+    border: 2px solid $primary-color;
+    box-shadow: 0 0 2px 2px;
+}
+
 //post card
 .card {
     width: 300px;
@@ -143,32 +148,85 @@ body {
     color: $hero-color;
     background: $secondary-color;
     padding: 10px;
+    border: 2px solid $primary-color;
     border-radius: 30px;
+
+    .card-image {
+        width: auto;
+        height: 300px;
+        border-radius: 20px 20px 0 0;
+        object-fit: cover;
+    }
+    
+    .button-ad {
+        margin: 10px;
+        text-align: center;
+    }
+    
+    .card-button {
+        text-decoration: none;
+        background: $primary-color;
+        padding: 10px 30px;
+        border-radius: 20px;
+    }
+    
+    .card-button:hover {
+        background: $hero-color;
+        color: $primary-color;
+    }
 }
 
-.card-image {
-    width: auto;
-    height: 300px;
-    border-radius: 20px;
-    object-fit: cover;
+//form styling code
+.form {
+    width: 80vw;
+    margin: auto;
+
+    .field {
+        margin: 10px 0;
+    }
+
+    .input {
+        padding: 15px;
+        width: 80%;
+        border-radius: 10px;
+        font-size: 14px;
+        border: 2px solid $primary-color;
+        background: 0;
+        outline: 0;
+    }
+
+    .textarea {
+        padding: 12px;
+        width: 80%;
+        border-radius: 10px;
+        font-size: 14px;
+        border: 2px solid $primary-color;
+        background: 0;
+        outline: 0;
+    }
+
+    .button {
+        width: 20%;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 14px;
+        border: 2px solid $primary-color;
+        color: $hero-color;
+        background: $secondary-color;
+        font-weight: weight(medium);
+    }
+
+    .button:hover {
+        background: $primary-color;
+        border: 2px solid $secondary-color;
+    }
+
+    .form-box {
+        box-shadow: 1.2px 1.2px 0 1px rgba($color: $text-color, $alpha: 1.0);
+    }
 }
 
-.button-ad {
-    margin: 10px;
-    text-align: center;
-}
 
-.card-button {
-    text-decoration: none;
-    background: $primary-color;
-    padding: 10px 30px;
-    border-radius: 20px;
-}
-
-.card-button:hover {
-    background: $hero-color;
-    color: $primary-color;
-}
 
 //The code below is for responsiveness
 @media only screen and (max-width: 480px) {
