@@ -7,7 +7,7 @@
         <div class="columns">
             {% for post in blog %}
                 <div class="column">
-                    <div class="blog-card">
+                    <div class="blog-card has-shadow">
                         <a class="blog-link" href="{% url 'blog_detail' post.slug %}">
                             <img class="blog-card-image" src="{{ post.image.url }}" alt="Blog Post Image">
                             <div class="blog-card-content">
@@ -17,7 +17,7 @@
                                 <small>
                                     <span>{{ post.author }}</span>
                                     <span>{{ post.posted_on }}</span>
-                                </small>
+                                </small> <hr>
                                 <div class="snipet">
                                     <p>{{ post.snipet| safe }}</p>
                                 </div>
