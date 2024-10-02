@@ -178,6 +178,20 @@ body {
     box-shadow: 1.2px 1.2px 0 1px rgba($color: $text-color, $alpha: 1.0);
 }
 
+.has-background {
+    background: $secondary-color;
+    padding: 10px;
+    color: $hero-color;
+    border-radius: 20px;
+}
+
+.has-background-2 {
+    background: $hero-color;
+    padding: 5px;
+    color: $text-color;
+    border-radius: 20px;
+}
+
 //post card
 .card {
     width: 300px;
