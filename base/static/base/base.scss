@@ -205,8 +205,8 @@ body {
 .slider-container {
     position: relative;
     overflow: hidden;
-    width: 80%;
-    margin: 40px auto;
+    width: 95%;
+    margin: 10px auto;
 
     .slider {
         @include dataColumns(row);
@@ -241,6 +241,7 @@ body {
         font-weight: weight(bold);
         border: 0;
         border-radius: 50%;
+        margin: 0 10px;
 
         &:hover {
             background: rgba($color: $text-color, $alpha: 0.5);
@@ -258,6 +259,7 @@ body {
     //pause animation on hover
     &:hover .slider {
         animation-play-state: paused;
+        cursor: pointer;
     }
 }
 
