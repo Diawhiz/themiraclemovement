@@ -1,4 +1,4 @@
- // Preloader animation
+// Preloader animation
 // window.addEventListener('DOMContentLoaded', () => {
 //   document.querySelector('.preloader').style.display = 'flex'; // show the preloader
 // });
