@@ -202,18 +202,71 @@ body {
 }
 
 //GOS section styling
-.slider {
-    @include dataColumns(row);
-    padding: 5px;
+.slider-container {
+    position: relative;
     overflow: hidden;
+    width: 80%;
+    margin: 40px auto;
 
-    .slider-image {
-        width: 600px;
-        height: 400px;
-        border-radius: 20px;
-        object-fit: cover;
-        object-position: top;
-        margin: 20px;
+    .slider {
+        @include dataColumns(row);
+        flex-wrap: nowrap;
+        animation: slide 15s infinite linear;
+
+        .slide {
+            flex-shrink: 0;
+            margin-right: 0;
+
+            .slider-image {
+                width: 600px;
+                height: 400px;
+                border-radius: 20px;
+                object-fit: cover;
+                object-position: top;
+                margin: 20px;
+            }
+        }
+    }
+
+    .icon {
+        width: 50px;
+        height: 50px;
+        background: $text-color;
+        color: $hero-color;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: size(subtitle);
+        font-weight: weight(bold);
+        border: 0;
+        border-radius: 50%;
+
+        &:hover {
+            background: rgba($color: $text-color, $alpha: 0.5);
+        }
+    }
+
+    .prev {
+        left: 0;
+    }
+
+    .next {
+        right: 0;
+    }
+
+    //pause animation on hover
+    &:hover .slider {
+        animation-play-state: paused;
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
     }
 }
 
