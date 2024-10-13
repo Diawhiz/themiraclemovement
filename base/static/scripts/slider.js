@@ -18,6 +18,8 @@ function showSlide() {
     slides[currentSlide].style.display = 'block';
 }
 
+showSlide(); //initialize
+
 // icon click event listener
 icons.forEach ((icon) => {
     icon.addEventListener('click', (e) => {
@@ -29,5 +31,3 @@ icons.forEach ((icon) => {
         showSlide();
     });
 });
-
-showSlide(); //initialize

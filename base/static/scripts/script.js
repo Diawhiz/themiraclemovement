@@ -14,3 +14,13 @@
 //   }, 3000); // 3 seconds
 // });
 
+
+//form field clear text on submit
+const clearField = document.querySelector('.button');
+const formField = document.querySelector('.input').value;
+const textArea = document.querySelector('.textarea').value;
+
+clearField.addEventListener('click', ()=> {
+    formField = '';
+    textArea = '';
+});

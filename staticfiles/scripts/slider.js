@@ -1,55 +1,33 @@
-//Home page slider
-const sliderContainer = document.querySelector('.slider-container');
+//The code below is for the slider in the about page
 const slider = document.querySelector('.slider');
 const slides = document.querySelectorAll('.slide');
 const icons = document.querySelectorAll('.icon');
-const textOverlay = document.querySelector('.text-overlay');
 
 let currentSlide = 0;
-let slideInterval;
 
-//set up slide interval
-slideInterval = setInterval(() => {
-    currentSlide++;
-    if (currentSlide >= slides.length) {
-        currentSlide = 0;
-    }
-    updateSlide();
-}, 5000);
+//Clone the first and the last slides
+const firstSlide = slides[0].cloneNode(true);
+const lastSlide = slides[slides.length - 1].cloneNode(true);
 
-//update slide function
-function updateSlide() {
-    slides.forEach ((slide, index) => {
-        if (index === currentSlide) {
-            slide.style.transform = 'translateX(0)';
-            textOverlay.classList.add('animation-slide-change');
+//Prepend the last slide clone and append the first slide clone
+slides[0].parentNode.insertBefore(lastSlide, slides[0]);
+slides[slides.length - 1].parentNode.appendChild(firstSlide);
 
-            //textOverlay animation end
-            textOverlay.addEventListener('animationend', () => {
-                textOverlay.classList.remove('animation-slide-change')
-            });
-        } else {
-            slide.style.transform = 'translateX(-100%)';
-        }
-    });
+function showSlide() {
+    // slides.forEach((slide) => slide.style.display = 'none');
+    slides[currentSlide].style.display = 'block';
 }
+
+showSlide(); //initialize
 
 // icon click event listener
 icons.forEach ((icon) => {
-    icon.addEventListener('click', () => {
-        if (icon.classList.contains('prev')) {
-            currentSlide--;
-            if (currentSlide < 0) {
-                currentSlide = slides.lenght - 1;
-            }
-        } else {
-            currentSlide++;
-            if (currentSlide >= slides.lenght) {
-                currentSlide = 0;
-            }
+    icon.addEventListener('click', (e) => {
+        if (e.target.classList.contains('prev')) {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        } else if (e.target.classList.contains('next')) {
+            currentSlide = (currentSlide + 1) % slides.length;
         }
-        updateSlide();
+        showSlide();
     });
 });
-
-//The code below is for the slider in the about page
