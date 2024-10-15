@@ -43,10 +43,10 @@ class BlogDetailView(generic.DetailView):
         post = self.object
         comments = post.comments.filter(active=True)
         comment_form = CommentForm()
-        # recent_posts = Post.objects.all().order_by('-posted_on')[:5]
+        recent_posts = Post.objects.all().order_by('-posted_on')[:5]
         context['comments'] = comments
         context['comment_form'] = comment_form
-        # context['recent_posts'] = recent_posts
+        context['recent_posts'] = recent_posts
         return context
     
 

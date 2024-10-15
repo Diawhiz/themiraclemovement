@@ -101,6 +101,11 @@ body {
     margin: 20px auto;
 }
 
+//alternative styling for section different from the default one.
+.alt-section {
+    margin: 60px;
+}
+
 .container {
     margin: 20px;
 }
@@ -314,7 +319,7 @@ body {
     }
 }
 
-//Blog post card styling
+//This is the section for blog styling.
 .blog-card {
     width: 350px;
     height: auto;
@@ -348,8 +353,49 @@ body {
         color: $hero-color;
     }
 }
+.figure {
+    margin: auto;
+    padding: 0 250px;
+
+    .blog-image {
+        width: 700px;
+        height: 500px;
+        border-radius: 20px;
+        object-fit: cover;
+        object-position: top;
+    
+        &:hover {
+            transform: scale(0.98);
+        }
+    }
+}
+
+
+//list styling (ordered/unordered) for the comment section.
+.list {
+    list-style: none;
+    width: 65%;
+    margin:0 auto 20px auto;
+
+    .list-item {
+        background: $hero-color;
+        margin-bottom: 10px;
+        color: $text-color;
+        padding: 10px;
+        border-radius: 10px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
 
 //form styling code
+.form-content {
+    margin: auto;
+    padding: 10px 140px;
+}
+
 .form {
     width: 80vw;
     margin: auto;

@@ -139,6 +139,33 @@ body {
     }
 }
 
+.sidebar {
+    display: flex;
+    justify-content: space-around;
+    // align-items: center;
+    flex-direction: row;
+    margin: 20px auto;
+
+    .sidebar-inner {
+        margin: 20px;
+    }
+}
+
+.aside {
+    background: $text-color;
+    color: $hero-color;
+}
+
+//list styling 
+.list {
+    list-style: none;
+
+    .list-item {
+        text-decoration: none;
+        color: $hero-color;
+    }
+}
+
 .title {
     font-weight: weight(bold);
     font-size: size(title);

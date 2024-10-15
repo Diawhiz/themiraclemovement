@@ -4,61 +4,51 @@
 
 {% block content %}
     <div class="container">
-        <div class="columns">
-            <div class="column">
-                <section class="section">
-                    <div class="content">
-                        <h2 class="title">{{ blog_detail.title }}</h2>
-                        <p>{{ blog_detail.author }} | {{ blog_detail.posted_on }}</p>
-                        {% if blog_detail.image %}
-                                <img class="image has-border has-shadow" src="{{ blog_detail.image.url }}" alt="{{ blog_detail.title }}">
-                        {% endif %}
-                        <p>{{ blog_detail.content | safe }}</p>
-                    </div>
+            <section class="alt-section">
+                <div>
+                    <h2 class="title">{{ blog_detail.title }}</h2>
+                    <p>{{ blog_detail.author }} | {{ blog_detail.posted_on }}</p>
+                    {% if blog_detail.image %}
+                            <figure class="figure">
+                                <img class="blog-image has-border has-shadow" src="{{ blog_detail.image.url }}" alt="{{ blog_detail.title }}">
+                            </figure>
+                    {% endif %}
+                    <p>{{ blog_detail.content | safe }}</p>
+                </div>
                     
-                    <div class="section">
-                        <div class="content">
-                            <h2>Comments</h2>
-                            <ul>
-                                {% for comment in comments %}
-                                        <li class="subtitle">{{ comment.name }}: <br>{{ comment.body }}</li>
-                                        <hr>
-                                {% empty %}
-                                    <li>No comments yet.</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                <div class="section">
+                    <div>
+                        <h2 class="has-text-centered">Comments</h2>
+                        <ul class="list has-background has-border has-shadow">
+                            {% for comment in comments %}
+                                    <li class="list-item">{{ comment.name }}:<br>{{ comment.body }}</li>
+                            {% empty %}
+                                <li class="list-item">No comments yet.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                         
-                        <div class="content">
-                            <h2>Leave a comment</h2>
-                            <form method="post" action="{% url 'add_comment' blog_detail.slug %}">
-                                {% csrf_token %}
-                                <div class="form">
-                                    <div class="field">
-                                        {{ comment_form.name | add_class:"input form-box" }}
-                                    </div>
-                                    <div class="field">
-                                        {{ comment_form.email | add_class:"input form-box" }}
-                                    </div>
-                                    <div class="field">
-                                        {{ comment_form.body | add_class:"textarea form-box" }}
-                                    </div>
-                                    <div class="field">
-                                        <button class="button form-box" type="submit">Add comment</button>
-                                    </div>
+                    <div class="form-content">
+                        <h2 class="has-text-centered">Leave a comment</h2>
+                        <form method="post" action="{% url 'add_comment' blog_detail.slug %}">
+                            {% csrf_token %}
+                            <div class="form">
+                                <div class="field">
+                                    {{ comment_form.name | add_class:"input form-box" }}
                                 </div>
-                            </form>
-                        </div>
+                                <div class="field">
+                                    {{ comment_form.email | add_class:"input form-box" }}
+                                </div>
+                                <div class="field">
+                                    {{ comment_form.body | add_class:"textarea form-box" }}
+                                </div>
+                                <div class="field">
+                                    <button class="button form-box" type="submit">Add comment</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </section>
-            </div>
-
-            <div class="column">
-                <section class="section">
-                    <h1 class="title has-text-centered">Recent post</h1>
-                    
-                </section>
-            </div>
-        </div>
+                </div>
+            </section>
     </div>
 {% endblock  %}
