@@ -15,12 +15,25 @@
 // });
 
 
-//form field clear text on submit
-const clearField = document.querySelector('.button');
-const formField = document.querySelector('.input').value;
-const textArea = document.querySelector('.textarea').value;
+//The code below is for the slider in the about page
+const scrollContainer = document.querySelector('.gallery');
+const backBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
 
-clearField.addEventListener('click', ()=> {
-    formField = '';
-    textArea = '';
+// let scrollContainer = 0;
+
+scrollContainer.addEventListener('wheel',(evt) => {
+    evt.preventDefault();
+    scrollContainer.scrollLeft += evt.deltaY;
+    scrollContainer.style.scrollBehavior = 'auto';
+})
+
+nextBtn.addEventListener('click', ()=> {
+    scrollContainer.style.scrollBehavior = 'smooth';
+    scrollContainer.scrollLeft += 400;
+});
+
+backBtn.addEventListener('click', ()=> {
+    scrollContainer.style.scrollBehavior = 'smooth';
+    scrollContainer.scrollLeft -= 400;
 });

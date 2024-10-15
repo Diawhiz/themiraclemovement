@@ -214,29 +214,40 @@ body {
 }
 
 //GOS section styling
-.slider-container {
+.gallery-wrap {
+    @include dataColumns(row);
     position: relative;
-    overflow: hidden;
-    width: 95%;
-    margin: 10px auto;
+    margin: 10% auto;
+    
+    .gallery {
+        overflow: hidden;
+        // overflow-x: scroll;
+        width: 95%;
+        display: flex;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     .slider {
-        @include dataColumns(row);
-        flex-wrap: nowrap;
-        animation: slide 15s infinite linear;
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 20px;
+        padding: 10px;
+        flex: none;
 
-        .slide {
-            flex-shrink: 0;
-            margin-right: 0;
+        &:first-child {
+            margin-right: 25%;
+        }
 
-            .slider-image {
-                width: 600px;
-                height: 400px;
-                border-radius: 20px;
-                object-fit: cover;
-                object-position: top;
-                margin: 20px;
-            }
+        .slider-image {
+            width: 500px;
+            height: 400px;
+            border-radius: 20px;
+            object-fit: cover;
+            object-position: top;
         }
     }
 
@@ -254,10 +265,6 @@ body {
         border: 0;
         border-radius: 50%;
         margin: 0 10px;
-
-        &:hover {
-            background: rgba($color: $text-color, $alpha: 0.5);
-        }
     }
 
     .prev {
@@ -267,22 +274,16 @@ body {
     .next {
         right: 0;
     }
-
-    //pause animation on hover
-    &:hover .slider {
-        animation-play-state: paused;
-        cursor: pointer;
-    }
 }
 
-@keyframes slide {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
+// @keyframes slide {
+//     0% {
+//         transform: translateX(0);
+//     }
+//     100% {
+//         transform: translateX(-100%);
+//     }
+// }
 
 //post card
 .card {
