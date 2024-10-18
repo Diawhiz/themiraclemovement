@@ -14,26 +14,52 @@
 //   }, 3000); // 3 seconds
 // });
 
-
 //The code below is for the slider in the about page
 const scrollContainer = document.querySelector('.gallery');
-const backBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
+const backBtn = document.querySelector('.prev');
+let isAutoScrolling = false; // Flag to control auto-scroll behavior
 
-// let scrollContainer = 0;
+// Function to handle automatic scrolling
+function autoScroll() {
+  if (!isAutoScrolling) return; // Exit if not auto-scrolling
 
-scrollContainer.addEventListener('wheel',(evt) => {
-    evt.preventDefault();
-    scrollContainer.scrollLeft += evt.deltaY;
-    scrollContainer.style.scrollBehavior = 'auto';
-})
+  scrollContainer.style.scrollBehavior = 'smooth';
+  scrollContainer.scrollLeft += 2; // Adjust scroll amount for desired speed
 
-nextBtn.addEventListener('click', ()=> {
-    scrollContainer.style.scrollBehavior = 'smooth';
-    scrollContainer.scrollLeft += 400;
+  // Check for end of scrollable content (optional)
+  if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+    isAutoScrolling = false; // Stop auto-scroll when reaching the end
+  }
+
+  requestAnimationFrame(autoScroll); // Schedule next frame for smooth animation
+}
+
+// Start auto-scrolling when the page loads (optional)
+// isAutoScrolling = true;
+// requestAnimationFrame(autoScroll);
+
+// Button click handlers (unchanged)
+nextBtn.addEventListener('click', () => {
+  scrollContainer.style.scrollBehavior = 'smooth';
+  scrollContainer.scrollLeft += 400;
 });
 
-backBtn.addEventListener('click', ()=> {
-    scrollContainer.style.scrollBehavior = 'smooth';
-    scrollContainer.scrollLeft -= 400;
+backBtn.addEventListener('click', () => {
+  scrollContainer.style.scrollBehavior = 'smooth';
+  scrollComment.scrollLeft -= 400;
+});
+
+// Optional: Pause/resume auto-scrolling on hover
+scrollContainer.addEventListener('mouseover', () => {
+  isAutoScrolling = false;
+});
+
+scrollContainer.addEventListener('mouseout', () => {
+  isAutoScrolling = true; // Resume after user interaction
+});
+
+// Optional: Stop auto-scrolling on user interaction with scroll wheel
+scrollContainer.addEventListener('wheel', () => {
+  isAutoScrolling = false;
 });
