@@ -6,12 +6,6 @@ from django.contrib.auth.models import User
 
 STATUS = ((0, 'Draft'), (1, 'Published'))
 
-class Country(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
 class Contact(models.Model):
     name = models.CharField(max_length=80)
     email = models.EmailField()
@@ -28,7 +22,6 @@ class Contact(models.Model):
 class FirstTimer(models.Model):
     name = models.CharField(max_length=80)
     email = models.EmailField()
-    # country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='first_timers')
     phone = models.CharField(max_length=20)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -71,3 +64,8 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.body, self.name)
+
+
+class Event(models.Model):
+    name = models.CharField(max_length=100)
+    event_date = models.DateTimeField()

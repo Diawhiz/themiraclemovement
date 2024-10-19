@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contact, FirstTimer, Country, Comment
+from .models import Contact, FirstTimer, Comment
 
 class ContactForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -17,10 +17,9 @@ class ContactForm(forms.ModelForm):
         fields = ('name', 'email', 'body')
 
 class FirstTimerForm(forms.ModelForm):
-    country = forms.ModelChoiceField(queryset=Country.objects.all())
     class Meta:
         model = FirstTimer
-        fields = ('name', 'email', 'country', 'phone')
+        fields = ('name', 'email', 'phone')
 
 # comment form
 class CommentForm(forms.ModelForm):

@@ -2,7 +2,7 @@ from django.db.models.query import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ContactForm, FirstTimerForm, CommentForm
 from django.views import generic
-from .models import Post
+from .models import Post, Event
 
 # Create your views here.
 def home(request):
@@ -61,3 +61,11 @@ def add_comment(request, slug):
             new_comment.save()
             return redirect('blog_detail', slug=post.slug)
     return render(request, 'base/blog_detail.html', {'post': post, 'comment_form': comment_form})
+
+
+def countdown_view(request):
+    event = Event.objects.first()  # Assuming you have only one event
+    event_datetime = event.event_date.strftime('%Y-%m-%dT%H:%M:%S')
+    event_name = event.name
+    context = {'event_datetime': event_datetime, 'event_name': event_name}
+    return render(request, 'live.html', context)

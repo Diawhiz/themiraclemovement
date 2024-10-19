@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Contact, FirstTimer, Country, Post, Comment
+from .models import Contact, FirstTimer, Post, Comment, Event
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
@@ -14,12 +14,6 @@ class FirstTimerAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone')
     list_filter = ['created_on']
     search_fields = ('name', 'email', 'phone')
-
-@admin.register(Country)
-class CountryAdmin(admin.ModelAdmin):
-    list_display = ['name']
-    search_fields = ['name']
-
 
 class PostAdmin(admin.ModelAdmin):
     FroalaField = ('content',)
@@ -39,3 +33,7 @@ class CommentAdmin(admin.ModelAdmin):
 
     def approve_comments(self, request, queryset):
         queryset.update(active=True)
+
+@admin.register(Event)
+class EventAdmin(admin.ModelAdmin):
+    list_display = ('name', 'event_date')

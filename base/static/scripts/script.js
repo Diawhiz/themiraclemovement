@@ -25,21 +25,16 @@ function autoScroll() {
   if (!isAutoScrolling) return; // Exit if not auto-scrolling
 
   scrollContainer.style.scrollBehavior = 'smooth';
-  scrollContainer.scrollLeft += 2; // Adjust scroll amount for desired speed
-
-  // Check for end of scrollable content (optional)
-  if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
-    isAutoScrolling = false; // Stop auto-scroll when reaching the end
-  }
+  scrollContainer.scrollLeft += 20;
 
   requestAnimationFrame(autoScroll); // Schedule next frame for smooth animation
 }
 
-// Start auto-scrolling when the page loads (optional)
-// isAutoScrolling = true;
-// requestAnimationFrame(autoScroll);
+// Start auto-scrolling when the page loads
+isAutoScrolling = true;
+requestAnimationFrame(autoScroll);
 
-// Button click handlers (unchanged)
+// Button click handlers
 nextBtn.addEventListener('click', () => {
   scrollContainer.style.scrollBehavior = 'smooth';
   scrollContainer.scrollLeft += 400;
@@ -47,19 +42,29 @@ nextBtn.addEventListener('click', () => {
 
 backBtn.addEventListener('click', () => {
   scrollContainer.style.scrollBehavior = 'smooth';
-  scrollComment.scrollLeft -= 400;
+  scrollContainer.scrollLeft -= 400;
 });
 
-// Optional: Pause/resume auto-scrolling on hover
-scrollContainer.addEventListener('mouseover', () => {
-  isAutoScrolling = false;
-});
 
-scrollContainer.addEventListener('mouseout', () => {
-  isAutoScrolling = true; // Resume after user interaction
-});
+//The code below is responsible for the event handler
+const countdownElement = document.querySelector('.countdown');
+const eventDateTime = `{{ event_datetime }}`;  // Pass the event date and time from the backend
+const eventNameElement = document.querySelector('.event-name');
+  eventNameElement.textContent = `{{ event_name }}`;
+const countdown = new Date(eventDateTime).getTime();
 
-// Optional: Stop auto-scrolling on user interaction with scroll wheel
-scrollContainer.addEventListener('wheel', () => {
-  isAutoScrolling = false;
-});
+const intervalId = setInterval(() => {
+  const now = new Date().getTime();
+  const distance = countdown - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  countdownElement.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+  if (distance < 0) {
+    clearInterval(intervalId);
+    countdownElement.innerHTML = `{{ event_name }} has started`;
+  }
+}, 1000);
