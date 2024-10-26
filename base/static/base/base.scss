@@ -450,6 +450,20 @@ body {
     }
 }
 
+//Live page
+.event-header {
+    .event-name {
+        font-size: 80px;
+        color: $primary-color;
+    }
+    
+    .event-name-2 {
+        font-size: 78px;
+        margin-top: -110px;
+        color: $text-color;
+    }
+}
+
 
 //footer styling
 .footer {

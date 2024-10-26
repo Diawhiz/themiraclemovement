@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ContactForm, FirstTimerForm, CommentForm
 from django.views import generic
 from .models import Post, Event
+from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
@@ -19,8 +20,8 @@ def about(request):
 def pastors(request):
     return render(request, 'base/pastors.html')
 
-def live(request):
-    return render(request, 'base/live.html')
+# def live(request):
+#     return render(request, 'base/live.html')
 
 class BlogView(generic.ListView):
     model = Post
@@ -63,9 +64,18 @@ def add_comment(request, slug):
     return render(request, 'base/blog_detail.html', {'post': post, 'comment_form': comment_form})
 
 
-def countdown_view(request):
-    event = Event.objects.first()  # Assuming you have only one event
+def LiveView(request):
+    event = Event.objects.first()
+    if not event:
+        # handle case when no events exist
+        return HttpResponse("No events found")
+    
     event_datetime = event.event_date.strftime('%Y-%m-%dT%H:%M:%S')
     event_name = event.name
+
+    #print statements for debugging
+    print(f"Event DateTime: {event_datetime}")
+    print(f"Event Name: {event_name}")
+
     context = {'event_datetime': event_datetime, 'event_name': event_name}
-    return render(request, 'live.html', context)
+    return render(request, 'base/live.html', context)
