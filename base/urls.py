@@ -9,5 +9,4 @@ urlpatterns = [
     path('blog/', views.BlogView.as_view(), name='blog'),
     path('blog/<slug:slug>/', views.BlogDetailView.as_view(), name='blog_detail'),
     path('blog/<slug:slug>/comment/', views.add_comment, name='add_comment'),
-    path('dashboard/', views.TemplateView.as_view(), name='dashboard'),
 ]

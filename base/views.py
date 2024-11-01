@@ -83,29 +83,3 @@ def LiveView(request):
 
     context = {'event_datetime': event_datetime, 'event_name': event_name}
     return render(request, 'base/live.html', context)
-
-#church admin dashboard
-@method_decorator(staff_member_required, name='dispatch')
-class AnalyticsDashboardView(TemplateView):
-    template_name = 'base/dashboard.html'
-    context_object_name = 'dashboard'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        
-        # Get page visit statistics
-        context['page_visits'] = PageVisit.objects.annotate(
-            date=TruncDate('timestamp')
-        ).values('date').annotate(
-            count=Count('id')
-        ).order_by('-date')[:30]
-        
-        # Get most visited pages
-        context['popular_pages'] = PageVisit.objects.values('page_url').annotate(
-            count=Count('id')
-        ).order_by('-count')[:10]
-        
-        # Get event attendance data
-        context['event_attendance'] = EventAttendance.objects.all().order_by('-date')[:10]
-        
-        return context

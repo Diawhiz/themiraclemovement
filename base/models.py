@@ -74,20 +74,3 @@ class Event(models.Model):
     def __str__(self):
         return self.name
     
-#models for dashboard
-class PageVisit(models.Model):
-    page_url = models.CharField(max_length=255)
-    timestamp = models.DateTimeField(default=timezone.now)
-    user_agent = models.TextField(null=True, blank=True)
-    ip_address = models.GenericIPAddressField(null=True, blank=True)
-    
-    class Meta:
-        ordering = ['-timestamp']
-
-class EventAttendance(models.Model):
-    event_name = models.CharField(max_length=255)
-    date = models.DateField()
-    attendees_count = models.IntegerField(default=0)
-    
-    class Meta:
-        ordering = ['-date']
