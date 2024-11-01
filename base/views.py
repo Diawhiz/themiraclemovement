@@ -1,9 +1,13 @@
-from django.db.models.query import Q
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import ContactForm, FirstTimerForm, CommentForm
+from .forms import ContactForm, CommentForm
 from django.views import generic
-from .models import Post, Event
+from .models import Post, Event, PageVisit, EventAttendance
 from django.http import HttpResponse
+from django.views.generic import TemplateView
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
+from django.db.models import Count
+from django.db.models.functions import TruncDate
 
 # Create your views here.
 def home(request):
@@ -79,3 +83,29 @@ def LiveView(request):
 
     context = {'event_datetime': event_datetime, 'event_name': event_name}
     return render(request, 'base/live.html', context)
+
+#church admin dashboard
+@method_decorator(staff_member_required, name='dispatch')
+class AnalyticsDashboardView(TemplateView):
+    template_name = 'base/dashboard.html'
+    context_object_name = 'dashboard'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        # Get page visit statistics
+        context['page_visits'] = PageVisit.objects.annotate(
+            date=TruncDate('timestamp')
+        ).values('date').annotate(
+            count=Count('id')
+        ).order_by('-date')[:30]
+        
+        # Get most visited pages
+        context['popular_pages'] = PageVisit.objects.values('page_url').annotate(
+            count=Count('id')
+        ).order_by('-count')[:10]
+        
+        # Get event attendance data
+        context['event_attendance'] = EventAttendance.objects.all().order_by('-date')[:10]
+        
+        return context
