@@ -46,25 +46,46 @@ backBtn.addEventListener('click', () => {
 });
 
 
-//The code below is responsible for the event handler
+// Properly escape the Django template variables for JavaScript
+console.log('Event DateTime:', '{{ event_datetime }}');
+console.log('Event Name:', '{{ event_name }}');
+
+const eventDateTime = '{{ event_datetime|safe }}';
+const eventName = '{{ event_name|safe }}';
+        
 const countdownElement = document.querySelector('.countdown');
-const eventDateTime = '{{ event_datetime }}';  // Pass the event date and time from the backend
 const eventNameElement = document.querySelector('.event-name');
-  eventNameElement.textContent = '{{ event_name }}';
+        
+// Set event name
+eventNameElement.textContent = eventName;
+
+// Convert datetime string to timestamp
 const countdown = new Date(eventDateTime).getTime();
 
-const intervalId = setInterval(() => {
+// Function to update countdown
+function updateCountdown() {
   const now = new Date().getTime();
   const distance = countdown - now;
 
+  // Calculate time components
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  countdownElement.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-  if (distance < 0) {
-    clearInterval(intervalId);
-    countdownElement.innerHTML = '{{ event_name }} has started';
-  }
-}, 1000);
+    // Check if countdown has expired
+    if (distance < 0) {
+        clearInterval(intervalId);
+        countdownElement.innerHTML = `${eventName} has started`;
+        return;
+    }
+
+    // Update countdown display
+    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+// Initial call
+updateCountdown();
+
+// Update every second
+const intervalId = setInterval(updateCountdown, 1000);

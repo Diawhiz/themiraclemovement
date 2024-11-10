@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ContactForm, CommentForm
 from django.views import generic
-from .models import Post, Event, PageVisit, EventAttendance
+from .models import Post, Event
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.contrib.admin.views.decorators import staff_member_required
@@ -23,6 +23,9 @@ def about(request):
 
 def pastors(request):
     return render(request, 'base/pastors.html')
+
+def admin(request):
+    return render(request, 'admin/index.html')
 
 # def live(request):
 #     return render(request, 'base/live.html')

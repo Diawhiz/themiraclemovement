@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.utils.translation import gettext_lazy as _
 
-from .models import Contact, FirstTimer, Post, Comment, Event, PageVisit, EventAttendance
+from .models import Contact, FirstTimer, Post, Comment, Event
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
@@ -38,24 +38,3 @@ class CommentAdmin(admin.ModelAdmin):
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     list_display = ('name', 'event_date')
-
-
-#church admin reg
-class ChurchAdminSite(AdminSite):
-    site_header = _('Church Management Dashboard')
-    site_title = _('Church Admin')
-    index_title = _('Dashboard')
-
-church_admin = ChurchAdminSite(name='church_admin')
-
-@admin.register(PageVisit, site=church_admin)
-class PageVisitAdmin(admin.ModelAdmin):
-    list_display = ('page_url', 'timestamp', 'ip_address')
-    list_filter = ('timestamp', 'page_url')
-    search_fields = ('page_url', 'ip_address')
-
-@admin.register(EventAttendance, site=church_admin)
-class EventAttendanceAdmin(admin.ModelAdmin):
-    list_display = ('event_name', 'date', 'attendees_count')
-    list_filter = ('date', 'event_name')
-    search_fields = ('event_name',)
