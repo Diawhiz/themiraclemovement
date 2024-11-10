@@ -24,9 +24,6 @@ def about(request):
 def pastors(request):
     return render(request, 'base/pastors.html')
 
-def admin(request):
-    return render(request, 'admin/index.html')
-
 # def live(request):
 #     return render(request, 'base/live.html')
 
