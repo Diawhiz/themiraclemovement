@@ -290,7 +290,12 @@ body {
     width: 300px;
     height: auto;
     color: $hero-color;
-    background: $secondary-color;
+    background: linear-gradient(
+        to right,
+        $primary-color -20%,
+        $background 50%,
+        $secondary-color 100%
+    );
     padding: 10px;
     border: 2px solid $primary-color;
     border-radius: 30px;
