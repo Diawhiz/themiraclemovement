@@ -17,6 +17,15 @@ class ContactForm(forms.ModelForm):
         fields = ('name', 'email', 'body')
 
 class FirstTimerForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(FirstTimerForm, self).__init__(*args, **kwargs)
+        placeholders = {
+            'name': 'Fullname',
+            'email': 'Email Address',
+            'phone': 'Enter Phone Number',
+        }
+        for field, placeholder in placeholders.items():
+            self.fields[field].widget.attrs['placeholder'] = placeholder
     class Meta:
         model = FirstTimer
         fields = ('name', 'email', 'phone')

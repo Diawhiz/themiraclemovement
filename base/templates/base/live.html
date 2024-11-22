@@ -1,9 +1,36 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-    <div class="event-header">
-         <h2 class="event-name has-text-centered">{{ event_name }}</h2>
-         <h2 class="event-name-2 has-text-centered">{{ event_name }}</h2>
+    <div class="container">
+        <div class="event">
+            <div class="event-header">
+                <h2 class="event-name has-text-centered">{{ event_name }}</h2>
+            </div>
+            <div class="countdown title has-text-centered"></div>
+        </div>
+        <section class="section">
+            <h1 class="title has-text-centered">First Timer Form</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form">
+                    <div class="field">
+                        <label class="label">Name:</label> <br>
+                        {{ firsttimer_form.name | add_class:"input form-box" }}
+                    </div>
+                    <div class="field">
+                        <label class="label">Email:</label> <br>
+                        {{ firsttimer_form.email | add_class:"input form-box" }}
+                        </div>
+                    <div class="field">
+                        <label class="label">Phone:</label> <br>
+                        {{ firsttimer_form.phone | add_class:"input form-box" }}
+                    </div>
+                    <div class="field">
+                        <button type="submit" class="button form-box">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </section>
     </div>
-    <div class="countdown title has-text-centered"></div>
+    
 {% endblock %}

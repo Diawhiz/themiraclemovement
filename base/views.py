@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import ContactForm, CommentForm
+from .forms import ContactForm, CommentForm, FirstTimerForm
 from django.views import generic
 from .models import Post, Event
 from django.http import HttpResponse
@@ -69,6 +69,12 @@ def add_comment(request, slug):
 
 
 def LiveView(request):
+    firsttimer_form = FirstTimerForm()
+    if request.method == 'POST':
+        firsttimer_form = FirstTimerForm(request.POST)
+        if firsttimer_form.is_valid():
+            firsttimer_form.save()
+
     event = Event.objects.first()
     if not event:
         # handle case when no events exist
@@ -81,5 +87,5 @@ def LiveView(request):
     print(f"Event DateTime: {event_datetime}")
     print(f"Event Name: {event_name}")
 
-    context = {'event_datetime': event_datetime, 'event_name': event_name}
-    return render(request, 'base/live.html', context)
+    context = {'event_datetime': event_datetime, 'event_name': event_name,}
+    return render(request, 'base/live.html', context, {'firsttimer_form': firsttimer_form})
