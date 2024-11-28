@@ -73,7 +73,35 @@
 
         <section class="section">
             <h1 class="title has-text-centered">Join us on our Youtube community</h1>
-            <iframe class="channel has-border has-shadow" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.730743715548!2d3.8662771738331014!3d7.384041712567857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10398d5580743055%3A0xc65f57e7fa0ad82b!2sChrist%20miracle%20church%20Agbala%20Ayo%20Church!5e0!3m2!1sen!2sng!4v1725056847908!5m2!1sen!2sng" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="youtube-container">
+                <!-- Main Featured Video -->
+                <div class="featured-video">
+                    <iframe 
+                        width="860" 
+                        height="515" 
+                        src="https://www.youtube.com/embed/?listType=user_uploads&list=YOUR_CHANNEL_ID" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- Subscribe Button and Count -->
+                <div class="channel-info">
+                    <div class="g-ytsubscribe" 
+                        data-channelid="YOUR_CHANNEL_ID" 
+                        data-layout="full" 
+                        data-theme="dark" 
+                        data-count="default">
+                    </div>
+                    <div id="subscriber-count"></div>
+                </div>
+
+                <!-- Recent Videos Grid -->
+                <div class="recent-videos" id="recent-videos">
+                    <!-- Videos will be loaded here -->
+                </div>
+            </div>
         </section>
 
         <section class="section">

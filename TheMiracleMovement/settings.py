@@ -12,6 +12,14 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import Config, RepositoryEnv
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Explicitly set the path to your env file
+ENV_PATH = BASE_DIR / 'env-config.env'
+config = Config(RepositoryEnv(ENV_PATH))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,13 +29,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=rjr#5f-s7m$fh74_o@he#n^27se2r262=xhe0g&0k1v0jnkb='
+SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
-
+if DEBUG:
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']
+else:
+    ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=lambda v: [s.strip() for s in v.split(',')])
 
 # Application definition
 
@@ -80,22 +90,29 @@ WSGI_APPLICATION = 'TheMiracleMovement.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'themiraclemovement',
-        'USER': 'bright',
-        'PASSWORD': 'Dia##48197210',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'sql-mode': 'STATIC_TRANS_TABLE',
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-            'collation': 'utf8mb4_unicode_ci',
-        },
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': config('DB_HOST'),
+            'PORT': config('DB_PORT', default='3306'),
+            'sql-mode': 'STATIC_TRANS_TABLE',
+            'OPTIONS': {
+                'charset': 'utf8mb4',
+                'collation': 'utf8mb4_unicode_ci',
+            },
+        }
+    }
 
 
 # Password validation
@@ -132,18 +149,30 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'base/static'), ]
-STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_FINDERS = [
-      # First add the two default Finders, since this will overwrite the default.
-      'django.contrib.staticfiles.finders.FileSystemFinder',
-      'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+# AWS S3 Configuration (for static files)
+if not DEBUG:
+    AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',
+    }
+    AWS_LOCATION = 'static'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+else:
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'base/static'), ]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_FINDERS = [
+        # First add the two default Finders, since this will overwrite the default.
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 
-      # Now add our custom SimpleBulma one.
-      'compressor.finders.CompressorFinder',
+        # Now add our custom SimpleBulma one.
+        'compressor.finders.CompressorFinder',
     ]
-
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

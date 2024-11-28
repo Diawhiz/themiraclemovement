@@ -89,3 +89,54 @@ updateCountdown();
 
 // Update every second
 const intervalId = setInterval(updateCountdown, 1000);
+
+//Youtube API Script..
+// Replace with your actual API key and Channel ID
+    const API_KEY = '{{ api_key }}';
+    const CHANNEL_ID = '{{ channel_id }}';
+    
+    // Load YouTube API
+    function loadYouTubeAPI() {
+        gapi.client.init({
+            'apiKey': API_KEY,
+            'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
+        }).then(function() {
+            // Get subscriber count
+            return gapi.client.youtube.channels.list({
+                part: 'statistics',
+                id: CHANNEL_ID
+            });
+        }).then(function(response) {
+            const subscriberCount = response.result.items[0].statistics.subscriberCount;
+            document.getElementById('subscriber-count').textContent = 
+                `${Number(subscriberCount).toLocaleString()} subscribers`;
+            
+            // Get recent videos
+            return gapi.client.youtube.search.list({
+                part: 'snippet',
+                channelId: CHANNEL_ID,
+                order: 'date',
+                maxResults: 6
+            });
+        }).then(function(response) {
+            const videos = response.result.items;
+            const recentVideosDiv = document.getElementById('recent-videos');
+            
+            videos.forEach(video => {
+                const videoDiv = document.createElement('div');
+                videoDiv.className = 'video-item';
+                videoDiv.innerHTML = `
+                    <img src="${video.snippet.thumbnails.medium.url}" alt="${video.snippet.title}">
+                    <h3>${video.snippet.title}</h3>
+                `;
+                videoDiv.onclick = () => {
+                    document.querySelector('.featured-video iframe').src = 
+                        `https://www.youtube.com/embed/${video.id.videoId}`;
+                };
+                recentVideosDiv.appendChild(videoDiv);
+            });
+        });
+    }
+
+    // Load the API
+    gapi.load('client', loadYouTubeAPI);

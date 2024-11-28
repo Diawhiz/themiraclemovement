@@ -21,3 +21,7 @@ django-libsass==0.9
 rcssmin==1.1.2 
 
 rjsmin==1.2.2
+
+djangorestframework==3.15.2
+
+python-decouple==3.8

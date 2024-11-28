@@ -3,11 +3,12 @@ from .forms import ContactForm, CommentForm, FirstTimerForm
 from django.views import generic
 from .models import Post, Event
 from django.http import HttpResponse
-from django.views.generic import TemplateView
-from django.contrib.admin.views.decorators import staff_member_required
-from django.utils.decorators import method_decorator
-from django.db.models import Count
-from django.db.models.functions import TruncDate
+# from django.views.generic import TemplateView
+# from django.contrib.admin.views.decorators import staff_member_required
+# from django.utils.decorators import method_decorator
+# from django.db.models import Count
+# from django.db.models.functions import TruncDate
+
 
 # Create your views here.
 def home(request):
@@ -89,3 +90,10 @@ def LiveView(request):
 
     context = {'event_datetime': event_datetime, 'event_name': event_name,}
     return render(request, 'base/live.html', context, {'firsttimer_form': firsttimer_form})
+
+def youtube_view(request):
+    context = {
+        'api_key': 'YOUR_API_KEY',
+        'channel_id': 'YOUR_CHANNEL_ID'
+    }
+    return render(request, 'base/home.html', context)
