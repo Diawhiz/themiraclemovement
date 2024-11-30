@@ -88,8 +88,8 @@ def LiveView(request):
     print(f"Event DateTime: {event_datetime}")
     print(f"Event Name: {event_name}")
 
-    context = {'event_datetime': event_datetime, 'event_name': event_name,}
-    return render(request, 'base/live.html', context, {'firsttimer_form': firsttimer_form})
+    context = {'event_datetime': event_datetime, 'event_name': event_name, 'firsttimer_form': firsttimer_form}
+    return render(request, 'base/live.html', context)
 
 def youtube_view(request):
     context = {

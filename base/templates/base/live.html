@@ -1,4 +1,6 @@
 {% extends 'base/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
     <div class="container">
@@ -6,8 +8,14 @@
             <div class="event-header">
                 <h2 class="event-name has-text-centered">{{ event_name }}</h2>
             </div>
-            <div class="countdown title has-text-centered"></div>
+            <div class="countdown title has-text-centered">{{ event_datetime }}</div>
         </div>
+
+        {% comment %} Youtube Section {% endcomment %}
+        <section class="section">
+
+        </section>
+        {% comment %} Firsttimers form section {% endcomment %}
         <section class="section">
             <h1 class="title has-text-centered">First Timer Form</h1>
             <form action="" method="post">
