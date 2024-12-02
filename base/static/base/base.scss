@@ -588,6 +588,24 @@ body {
     }
 }
 
+.live-stream-container {
+     width: 100%;
+     max-width: 1200px;
+     margin: 0 auto;
+
+    #live-stream-iframe {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border: none;
+    }
+
+    #stream-status {
+        text-align: center;
+        padding: 10px;
+        background-color: #f0f0f0;
+    }
+ }
+
 
 //The code below is for responsiveness
 @media only screen and (max-width: 480px) {
