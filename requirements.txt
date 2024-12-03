@@ -6,7 +6,7 @@ pillow==10.4.0
 
 mysqlclient==2.2.4
 
-tornado==6.4.1
+tornado==6.4.2
 
 django-widget-tweaks==1.5.0
 
