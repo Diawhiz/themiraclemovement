@@ -21,9 +21,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ENV_PATH = BASE_DIR / 'env-config.env'
 config = Config(RepositoryEnv(ENV_PATH))
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -109,6 +106,8 @@ else:
             'sql-mode': 'STATIC_TRANS_TABLE',
             'OPTIONS': {
                 'charset': 'utf8mb4',
+                'sql_mode': 'STRICT_TRANS_TABLES',
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
                 'collation': 'utf8mb4_unicode_ci',
             },
         }
@@ -166,11 +165,8 @@ else:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'base/static'), ]
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_FINDERS = [
-        # First add the two default Finders, since this will overwrite the default.
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-
-        # Now add our custom SimpleBulma one.
         'compressor.finders.CompressorFinder',
     ]
 
@@ -180,6 +176,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'staticfiles')
  
 
 # Default primary key field type
